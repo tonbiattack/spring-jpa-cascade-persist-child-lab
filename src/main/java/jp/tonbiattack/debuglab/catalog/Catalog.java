@@ -1,5 +1,6 @@
 package jp.tonbiattack.debuglab.catalog;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ public class Catalog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String catalogCode;
-    @OneToMany(mappedBy = "catalog")
+    @OneToMany(mappedBy = "catalog", cascade = CascadeType.PERSIST)
     private List<CatalogItem> items = new ArrayList<>();
 
     protected Catalog() {}
